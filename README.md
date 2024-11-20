@@ -122,3 +122,5 @@
 # Deploy 
 
 -  no settings.py : STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+-  https://www.pythonanywhere.com/
+-  https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
