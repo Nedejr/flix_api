@@ -121,6 +121,34 @@
 
 # Deploy 
 
--  no settings.py : STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
--  https://www.pythonanywhere.com/
--  https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
+- no settings.py : STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+- https://www.pythonanywhere.com/
+- https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
+- antes de configurar Web app and WSGI file executar python manage.py collectstatic
+- no arquivo /var/www/nedejr_pythonanywhere_com_wsgi.py desconentar:
+    
+    import os
+    import sys
+
+    path = '/home/nedejr/flix_api'
+    if path not in sys.path:
+        sys.path.append(path)
+
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'app.settings'
+
+
+    from django.core.wsgi import get_wsgi_application
+    application = get_wsgi_application()
+
+- reload na aplicação Web App
+- configurar a Virtualenv no Python Anywhere
+- configurar o Static files no Python Anywhere
+    	directory : /home/user/flix_api/staticfiles
+        url: /static/
+- habilitar Force HTTPS
+- reload na aplicação Web App
+- no bash do Python Anywhere:
+    python manage.py migrate
+    python manage.py createsuperuser
+- reload na aplicação Web App
+- ativar virtualenv: workon flix-virtualenv
